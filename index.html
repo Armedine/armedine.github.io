@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+	Created by Stephen R. Baker
+	https://github.com/Armedine
+	https://iterable.com/marketing-masters/stephen-baker/
+
+	This document and its associated Git profiles are not official members of, nor affiliated with, Iterable or any Iterable partner.
+
+	This document was designed as a quick-reference tool for development within Iterable templates, leveraging their templating language.
+
+	For official Handlebars documentation and help articles, visit https://support.iterable.com/hc/en-us
+
+	Version stamp: 20250724
+-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Stephen Robert Baker">
+  <meta name="description" content="An extremely lightweight reference document for looking up basic Handlebars functions to use within Iterable.">
+  <meta name="keywords" content="web development, HTML, CSS, JavaScript">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iterable Handlebars Functions Reference</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #202124; /* Google Dark Mode background */
+      color: #e8eaed; /* Google Dark Mode text color */
+      margin: 20px;
+      line-height: 1.6;
+      display: flex; /* Use flexbox for main layout */
+    }
+    h1 {
+      color: #bdc1c6; /* Google Dark Mode heading color */
+      border-bottom: 1px solid #5f6368;
+      padding-bottom: 10px;
+    }
+    h2 {
+      color: #8ab4f8; /* A lighter blue for subheadings */
+      margin-top: 40px;
+      border-bottom: 1px solid #3c4043;
+      padding-bottom: 5px;
+    }
+    h3 {
+      color: #9aa0a6; /* Slightly darker for function names */
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+    a {
+      color: #8ab4f8; /* Google Dark Mode link color */
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    pre {
+      background-color: #2e2e2e; /* Code block background */
+      color: #f8f8f2; /* Code text color */
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      white-space: pre-wrap; /* Ensures long lines wrap */
+      word-break: break-all;
+    }
+    code {
+      font-family: 'Fira Mono', 'Droid Sans Mono', monospace;
+      font-size: 0.9em;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    ul li {
+      margin-bottom: 5px;
+    }
+    .main-content {
+      flex-grow: 1; /* Allows main content to take available space */
+      margin-right: 220px; /* Space for the fixed sidebar */
+    }
+    .fixed-index-sidebar {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 200px;
+      height: calc(100vh - 40px); /* Full viewport height minus margins */
+      background-color: #2a2a2a; /* Slightly darker than body for contrast */
+      border-radius: 8px;
+      padding: 15px;
+      overflow-y: auto; /* Enable scrolling for the sidebar */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+    .fixed-index-sidebar h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #5f6368;
+      padding-bottom: 8px;
+      color: #bdc1c6;
+    }
+    .fixed-index-sidebar ul {
+      padding-left: 0;
+    }
+    .fixed-index-sidebar ul li {
+      margin-bottom: 8px; /* Added more space between items */
+      padding: 2px 0;
+    }
+    .fixed-index-sidebar ul li:nth-child(even) {
+      background-color: #353535; /* Alternating background color */
+      border-radius: 4px;
+    }
+    .fixed-index-sidebar ul li a {
+      font-size: 0.9em;
+      display: block;
+      padding: 3px 0;
+      color: #aab8fa; /* Slightly different link color for sidebar */
+    }
+    .fixed-index-sidebar ul li a:hover {
+      text-decoration: underline;
+      color: #c0ccff;
+    }
+    .fixed-index-sidebar input[type="text"] {
+      width: calc(100% - 10px);
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #5f6368;
+      border-radius: 4px;
+      background-color: #3c4043;
+      color: #e8eaed;
+      font-size: 0.9em;
+    }
+    .fixed-index-sidebar input[type="text"]::placeholder {
+      color: #9aa0a6;
+    }
+    .tiny-code {
+      font-family: 'Consolas', sans-serif;
+      color: #00ffe4;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-content">
+    <h1>Handlebars Functions Reference</h1>
+
+    <div class="code-example-section">
+      <h3>Supported Date and Time Format Strings</h3>
+      <ul>
+        <li>Year: <br/><code class='tiny-code'>yyyy</code> (e.g., `2025`)</li><br/>
+        <li>Month: <br/><code class='tiny-code'>M</code> or <br/><code class='tiny-code'>MM</code> (e.g., `1` or `01` for January)</li><br/>
+        <li>Day of Month: <br/><code class='tiny-code'>d</code> or <br/><code class='tiny-code'>dd</code> (e.g., `1` or `01`)</li><br/>
+        <li>Hour (24-hour): <br/><code class='tiny-code'>H</code> or <br/><code class='tiny-code'>HH</code> (e.g., `00` for midnight)</li><br/>
+        <li>Minute: <br/><code class='tiny-code'>m</code> or <br/><code class='tiny-code'>mm</code> (e.g., `0` or `00`)</li><br/>
+        <li>Second: <br/><code class='tiny-code'>s</code> or <br/><code class='tiny-code'>ss</code> (e.g., `0` or `00`)</li><br/>
+        <li>Time Zone Offset: <br/><code class='tiny-code'>Z</code> (e.g., `-04:00` or `+07:00`)</li><br/>
+        <li>Day of Week (number): <br/><code class='tiny-code'>u</code> (e.g., `1` for Monday)</li><br/>
+        <li>Day of Week (full name): <br/><code class='tiny-code'>EEEE</code> (e.g., `Thursday`)</li><br/>
+        <li>Day of Year: <br/><code class='tiny-code'>D</code> (e.g., `206` for July 24)</li><br/>
+        <li>Date only: <br/><code class='tiny-code'>yyyy-MM-dd</code> (e.g., `2000-01-01`)</li><br/>
+        <li>Date and Time (seconds): <br/><code class='tiny-code'>yyyy-MM-dd HH:mm:ss</code> (e.g., `2000-01-01 00:00:00`)</li><br/>
+        <li>Date and Time (seconds with timezone): <br/><code class='tiny-code'>yyyy-MM-dd HH:mm:ss Z</code> (e.g., `2000-01-01 00:00:00 -04:00`)</li><br/>
+        <li>ISO 8601 (milliseconds with timezone): <br/><code class='tiny-code'>yyyy-MM-dd'T'HH:mm:ss.SSSZ</code> (e.g., `2000-01-01T00:00:00.000-04:00`)</li><br/>
+        <li>Short format: <br/><code class='tiny-code'>short</code> (e.g., `6/19/17`)</li><br/>
+        <li>Medium format: <br/><code class='tiny-code'>medium</code> (e.g., `Jun 19, 2017`)</li><br/>
+        <li>Long format: <br/><code class='tiny-code'>long</code> (e.g., `June 19, 2017`)</li><br/>
+        <li>Full format: <br/><code class='tiny-code'>full</code> (e.g., `Tuesday, June 19, 2017`)</li><br/>
+        <li>Two-digit year for age: <br/><code class='tiny-code'>yy</code></li><br/>
+      </ul>
+
+      <h3>Supported Time Units for Date Math Expressions</h3>
+      <ul>
+        <li><code class='tiny-code'>y</code>: Years</li>
+        <li><code class='tiny-code'>M</code>: Months</li>
+        <li><code class='tiny-code'>w</code>: Weeks</li>
+        <li><code class='tiny-code'>d</code>: Days</li>
+        <li><code class='tiny-code'>h</code> or <code class='tiny-code'>H</code>: Hours</li>
+        <li><code class='tiny-code'>m</code>: Minutes</li>
+        <li><code class='tiny-code'>s</code>: Seconds</li>
+      </ul>
+    </div>
+    <div class="code-example-section">
+      <h2>Code Examples</h2>
+
+      <h3 id="abbreviate"><a href="#abbreviate"><code>{{abbreviate}}</code></a></h3>
+      <pre><code>{{abbreviate myMergeParam 7}}</code></pre>
+
+      <h3 id="and-block"><a href="#and-block"><code>{{#and}}...{{/and}}</code></a></h3>
+      <pre><code>{{#and likesCats likesDogs}}
+  &lt;div&gt;You like cats and dogs!&lt;/div&gt;
+{{else}}
+  &lt;div&gt;There are some pets you don't like!&lt;/div&gt;
+{{/and}}</code></pre>
+
+      <h3 id="and-inline"><a href="#and-inline"><code>{{and}}</code></a></h3>
+      <pre><code>{{and likesCats likesDogs likesHamsters yes="Likes all the pets" no="Does not like all the pets"}}</code></pre>
+
+      <h3 id="assign"><a href="#assign"><code>{{#assign}}...{{/assign}}</code></a></h3>
+      <pre><code>{{#assign "myVar"}}Iterable{{/assign}}
+Greetings from {{myVar}}</code></pre>
+
+      <h3 id="base64"><a href="#base64"><code>{{#base64}}...{{/base64}}</code></a></h3>
+      <pre><code>{{#base64}}{{myMergeParam}}{{/base64}}
+{{#base64}}user@example.com{{/base64}}</code></pre>
+
+      <h3 id="breaklines"><a href="#breaklines"><code>{{#breaklines}}...{{/breaklines}}</code></a></h3>
+      <pre><code>{{#breaklines}}{{myMergeParam}}{{/breaklines}}</code></pre>
+
+      <h3 id="capitalize"><a href="#capitalize"><code>{{capitalize}}</code></a></h3>
+      <pre><code>{{capitalize "war and peace"}}
+{{capitalize favoriteBook}}</code></pre>
+
+      <h3 id="capitalizeFirst"><a href="#capitalizeFirst"><code>{{capitalizeFirst}}</code></a></h3>
+      <pre><code>{{capitalizeFirst firstName}}</code></pre>
+
+      <h3 id="capitalizeFirst-lower"><a href="#capitalizeFirst-lower"><code>{{capitalizeFirst (lower)}}</code></a></h3>
+      <pre><code>{{capitalizeFirst (lower firstName)}}</code></pre>
+
+      <h3 id="center"><a href="#center"><code>{{center}}</code></a></h3>
+      <pre><code>{{center myMergeParam size=20 pad="-"}}</code></pre>
+
+      <h3 id="cut"><a href="#cut"><code>{{cut}}</code></a></h3>
+      <pre><code>{{cut myMergeParam " "}}</code></pre>
+
+      <h3 id="dateFormat"><a href="#dateFormat"><code>{{dateFormat}}</code></a></h3>
+      <pre><code>{{dateFormat "2018-06-22 14:00:00 +07:00" format="yyyy-MM-dd HH:mm:ss Z" tz="America/Denver"}}</code></pre>
+
+      <h3 id="dateFormat-locale"><a href="#dateFormat-locale"><code>{{dateFormat (with locale)}}</code></a></h3>
+      <pre><code>{{dateFormat "2018-06-01 00:00:00" "full" "es_ES"}}</code></pre>
+
+      <h3 id="dateFormat-full"><a href="#dateFormat-full"><code>{{dateFormat (full)}}</code></a></h3>
+      <pre><code>{{dateFormat myDateField format="full"}}</code></pre>
+
+      <h3 id="dateFormat-long"><a href="#dateFormat-long"><code>{{dateFormat (long)}}</code></a></h3>
+      <pre><code>{{dateFormat myDateField format="long"}}</code></pre>
+
+      <h3 id="dateFormat-medium"><a href="#dateFormat-medium"><code>{{dateFormat (medium)}}</code></a></h3>
+      <pre><code>{{dateFormat myDateField format="medium"}}</code></pre>
+
+      <h3 id="dateFormat-short"><a href="#dateFormat-short"><code>{{dateFormat (short)}}</code></a></h3>
+      <pre><code>{{dateFormat myDateField format="short"}}</code></pre>
+
+      <h3 id="dateFormat-tz"><a href="#dateFormat-tz"><code>{{dateFormat (with time zone)}}</code></a></h3>
+      <pre><code>{{dateFormat myDateField tz="America/Los_Angeles"}}</code></pre>
+
+      <h3 id="dateMath"><a href="#dateMath"><code>{{dateMath}}</code></a></h3>
+      <pre><code>{{dateMath dateParameter "-5h" format="yyyy-MM-dd HH:mm:ss Z" tz="America/New_York" locale="es_ES"}}</code></pre>
+
+      <h3 id="dateMath-age"><a href="#dateMath-age"><code>{{dateMath (age)}}</code></a></h3>
+      <pre><code>{{dateMath birthDateField (now format="-y'y'+1'y'-M'M'+1'M'-d'd'+1'd'-H'H'-m'm'-s's'" tz="UTC") format="yy"}}</code></pre>
+
+      <h3 id="dateMath-calculate-from-date"><a href="#dateMath-calculate-from-date"><code>{{dateMath (calculate from date)}}</code></a></h3>
+      <pre><code>{{dateMath myDateField "+1y-1M+3w-17d+7h+1m-50s"}}</code></pre>
+
+      <h3 id="dateMath-calculate-from-now"><a href="#dateMath-calculate-from-now"><code>{{dateMath (calculate from now)}}</code></a></h3>
+      <pre><code>{{dateMath "now" "-24h" format="yyyyMMddHHmmss"}}</code></pre>
+
+      <h3 id="dateMath-days-away"><a href="#dateMath-days-away"><code>{{dateMath (days away)}}</code></a></h3>
+      <pre><code>{{dateMath myDateField (now format="-y'y'+1'y'-M'M'+1'M'-d'd'+1'd'-H'H'-m'm'-s's'" tz="UTC") format="D"}}</code></pre>
+      <pre><code>{{#assign "yearDifference"}}{{math (now format="yyyy" tz="UTC") '-' (dateFormat myDateParam format="yyyy" tz="UTC")}}{{/assign}}
+{{#assign "yearToDays"}}{{math yearDifference '*' 365}}{{/assign}}
+{{#assign "dayDifference"}}{{math (now format="D" tz="UTC") '-' (dateFormat myDateParam format="D" tz="UTC")}}{{/assign}}
+{{math dayDifference '+' yearToDays}} days</code></pre>
+
+      <h3 id="defaultIfEmpty"><a href="#defaultIfEmpty"><code>{{defaultIfEmpty}}</code></a></h3>
+      <pre><code>{{defaultIfEmpty myMergeParam "My default value"}}</code></pre>
+
+      <h3 id="each"><a href="#each"><code>{{#each}}...{{/each}}</code></a></h3>
+      <pre><code>{{#each shoppingCartItems}}
+  &lt;div&gt;Item name: {{name}}&lt;/div&gt;
+  &lt;div&gt;Item price: {{price}}&lt;/div&gt;
+{{/each}}</code></pre>
+
+      <h3 id="each-index"><a href="#each-index"><code>{{#each}}...{{@index}}...{{/each}}</code></a></h3>
+      <pre><code>{{#each shoppingCartItems}}
+  &lt;div&gt;Item {{math @index '+' 1}} name: {{name}}&lt;/div&gt;
+{{/each}}</code></pre>
+
+      <h3 id="eq-array-block"><a href="#eq-array-block"><code>{{#eq (array)}}...{{/eq}}</code></a></h3>
+      <pre><code>{{#eq array1 array2}}
+  The arrays are equal
+{{else}}
+  The arrays are not equal
+{{/eq}}</code></pre>
+
+      <h3 id="eq-array-inline"><a href="#eq-array-inline"><code>{{eq (array)}}</code></a></h3>
+      <pre><code>{{#and (gt array1.size 2) (eq array1 array2)}}
+  The arrays are equal and contain more than two items
+{{else}}
+  The arrays are not equal, or they don't contain more than two items.
+{{/and}}</code></pre>
+
+      <h3 id="eq-numeric-block"><a href="#eq-numeric-block"><code>{{#ifEq (numeric)}}...{{/ifEq}}</code></a></h3>
+      <pre><code>{{#ifEq age 21}}
+  &lt;div&gt;Equals&lt;/div&gt;
+{{else}}
+  &lt;div&gt;Not equals&lt;/div&gt;
+{{/ifEq}}</code></pre>
+
+      <h3 id="eq-numeric-inline"><a href="#eq-numeric-inline"><code>{{eq (numeric)}}</code></a></h3>
+      <pre><code>{{eq 1 numberOfPurchases yes="Equal" no="Not equal"}}</code></pre>
+
+      <h3 id="eq-object-block"><a href="#eq-object-block"><code>{{#eq (object)}}...{{/eq}}</code></a></h3>
+      <pre><code>{{#eq obj1 obj2}}
+  The objects are equal
+{{else}}
+  The objects are not equal
+{{/eq}}</code></pre>
+
+      <h3 id="eq-object-inline"><a href="#eq-object-inline"><code>{{eq (object)}}</code></a></h3>
+      <pre><code>{{#and (eq obj1 obj2) (eq obj1.b 2)}}
+  The objects are equal and b is 2
+{{else}}
+  The objects are not equal or b is not 2
+{{/and}}</code></pre>
+
+      <h3 id="fieldName"><a href="#fieldName"><code>{{fieldName}}</code></a></h3>
+      <pre><code>{{email}}</code></pre>
+
+      <h3 id="fieldWithBrackets"><a href="#fieldWithBrackets"><code>{{[field name]}}</code></a></h3>
+      <pre><code>{{[first name]}}
+{{[1stName]}}
+{{[User Signed Up].[First Name]}}</code></pre>
+
+      <h3 id="gt-numeric-block"><a href="#gt-numeric-block"><code>{{#ifGt (numeric)}}...{{/ifGt}}</code></a></h3>
+      <pre><code>{{#ifGt age 21}}
+  &lt;div&gt;Greater than&lt;/div&gt;
+{{else}}
+  &lt;div&gt;Not greater than&lt;/div&gt;
+{{/ifGt}}</code></pre>
+
+      <h3 id="gt-numeric-inline"><a href="#gt-numeric-inline"><code>{{gt (numeric)}}</code></a></h3>
+      <pre><code>{{gt 1 numberOfPurchases yes="Greater than" no="Not greater than"}}</code></pre>
+
+      <h3 id="gte-numeric-block"><a href="#gte-numeric-block"><code>{{#ifGte (numeric)}}...{{/ifGte}}</code></a></h3>
+      <pre><code>{{#ifGte age 21}}
+  &lt;div&gt;Greater than or equal&lt;/div&gt;
+{{else}}
+  &lt;div&gt;Not greater than or equal&lt;/div&gt;
+{{/ifGte}}</code></pre>
+
+      <h3 id="gte-numeric-inline"><a href="#gte-numeric-inline"><code>{{gte (numeric)}}</code></a></h3>
+      <pre><code>{{gte 1 numberOfPurchases yes="Greater than or equal" no="Not greater than or equal"}}</code></pre>
+
+      <h3 id="hmacSHA1"><a href="#hmacSHA1"><code>{{hmacSHA1}}</code></a></h3>
+      <pre><code>{{hmacSHA1 field1 field2}}</code></pre>
+
+      <h3 id="if"><a href="#if"><code>{{#if}}...{{/if}}</code></a></h3>
+      <pre><code>{{#if activeUser}}
+  &lt;div&gt;Hi active user!&lt;/div&gt;
+{{else}}
+  &lt;div&gt;Hi inactive user&lt;/div&gt;
+{{/if}}</code></pre>
+
+      <h3 id="if-nested"><a href="#if-nested"><code>{{#if}}...{{else if}}...{{/if}}</code></a></h3>
+      <pre><code>{{#if likesCats}}
+  &lt;div&gt;You like pets!&lt;/div&gt;
+{{else if likesDogs}}
+  &lt;div&gt;You like pets!&lt;/div&gt;
+{{/if}}</code></pre>
+
+      <h3 id="ifContains"><a href="#ifContains"><code>{{#ifContains}}...{{/ifContains}}</code></a></h3>
+      <pre><code>{{#ifContains shoppingCartItems '{"productName":"chips"}'}}
+   {{#ifContains shoppingCartItems '{"productName":"dip"}'}}
+    &lt;div&gt;You have chips and dip in your cart!&lt;/div&gt;
+   {{else}}
+    &lt;div&gt;You just have chips in your cart!&lt;/div&gt;
+   {{/ifContains}}
+{{else}}
+   {{#ifContains shoppingCartItems '{"productName":"dip"}'}}
+    &lt;div&gt;You just have dip in your cart&lt;/div&gt;
+   {{else}}
+    &lt;div&gt;You have neither chips nor dip in your cart!&lt;/div&gt;
+   {{/ifContains}}
+{{/ifContains}}</code></pre>
+      <pre><code>{{#ifContains emailListIds "1234567"}}
+   {{email}} is a member of list 1234567
+{{else}}
+   {{email}} is not a member of list 1234567
+{{/ifContains}}</code></pre>
+
+      <h3 id="ifContainsStr"><a href="#ifContainsStr"><code>{{#ifContainsStr}}...{{/ifContainsStr}}</code></a></h3>
+      <pre><code>{{#ifContainsStr haystack "needle"}}
+  &lt;div&gt;Haystack contains needle!&lt;/div&gt;
+{{/ifContainsStr}}</code></pre>
+
+      <h3 id="ifMatchesRegexStr-exact"><a href="#ifMatchesRegexStr-exact"><code>{{#ifMatchesRegexStr (exact)}}...{{/ifMatchesRegexStr}}</code></a></h3>
+      <pre><code>{{#ifMatchesRegexStr gender "male"}}
+  &lt;div&gt;Buy this tie!&lt;/div&gt;
+{{#ifMatchesRegexStr}}</code></pre>
+
+      <h3 id="ifMatchesRegexStr-contains"><a href="#ifMatchesRegexStr-contains"><code>{{#ifMatchesRegexStr (contains)}}...{{/ifMatchesRegexStr}}</code></a></h3>
+      <pre><code>{{#ifMatchesRegexStr catName ".*[Bb]ojangles.*"}}
+  &lt;div&gt;Is your cat's name Mr. Bojangles?&lt;/div&gt;
+{{#ifMatchesRegexStr}}</code></pre>
+
+      <h3 id="join"><a href="#join"><code>{{join}}</code></a></h3>
+      <pre><code>{{join myMergeParam ", " prefix="Start - " suffix=" - End"}}</code></pre>
+
+      <h3 id="key-this-array"><a href="#key-this-array"><code>@key</code> and <code>this</code> (with arrays)</a></h3>
+      <pre><code>{{#each favoriteColors}}
+   Key: {{@key}}, Value: {{this}}
+{{/each}}</code></pre>
+
+      <h3 id="key-this-object"><a href="#key-this-object"><code>@key</code> and <code>this</code> (with objects)</a></h3>
+      <pre><code>{{#each translations}}
+  {{#ifContainsStr @key "es"}}
+    The translation for {{@key}} is {{this}}.
+  {{/ifContainsStr}}
+{{/each}}</code></pre>
+
+      <h3 id="lower"><a href="#lower"><code>{{lower}}</code></a></h3>
+      <pre><code>{{lower myMergeParam}}</code></pre>
+
+      <h3 id="lookup"><a href="#lookup"><code>{{#lookup}}...{{/lookup}}</code></a></h3>
+      <pre><code>{{#lookup greetings language as |lang|}}{{lang.greeting_1}}{{/lookup}}
+{{#lookup greetings language as |lang|}}{{lang.greeting_2}}{{/lookup}}</code></pre>
+
+      <h3 id="lookup-periods"><a href="#lookup-periods"><code>{{#lookup (with periods)}}...{{/lookup}}</code></a></h3>
+      <pre><code>{{#lookup greetings email resolveKey=false as |df_email|}}</code></pre>
+
+      <h3 id="lt-numeric-block"><a href="#lt-numeric-block"><code>{{#ifLt (numeric)}}...{{/ifLt}}</code></a></h3>
+      <pre><code>{{#ifLt age 21}}
+  &lt;div&gt;Less than&lt;/div&gt;
+{{else}}
+  &lt;div&gt;Not less than&lt;/div&gt;
+{{/ifLt}}</code></pre>
+
+      <h3 id="lt-numeric-inline"><a href="#lt-numeric-inline"><code>{{lt (numeric)}}</code></a></h3>
+      <pre><code>{{lt 1 numberOfPurchases yes="Less than" no="Not less than"}}</code></pre>
+
+      <h3 id="lte-numeric-block"><a href="#lte-numeric-block"><code>{{#ifLte (numeric)}}...{{/ifLte}}</code></a></h3>
+      <pre><code>{{#ifLte age 21}}
+  &lt;div&gt;Less than or equal&lt;/div&gt;
+{{else}}
+  &lt;div&gt;Not less than or equal&lt;/div&gt;
+{{/ifLte}}</code></pre>
+
+      <h3 id="lte-numeric-inline"><a href="#lte-numeric-inline"><code>{{lte (numeric)}}</code></a></h3>
+      <pre><code>{{lte 1 numberOfPurchases yes="Less than or equal" no="Not less than or equal"}}</code></pre>
+
+      <h3 id="maxInList"><a href="#maxInList"><code>{{#maxInList}}...{{/maxInList}}</code></a></h3>
+      <pre><code>{{#maxInList shoppingCartItems "price"}}
+  &lt;div&gt;The most expensive item in your cart is: {{price}}&lt;/div&gt;
+{{/maxInList}}</code></pre>
+
+      <h3 id="md5"><a href="#md5"><code>{{md5}}</code></a></h3>
+      <pre><code>{{md5 field1}}</code></pre>
+
+      <h3 id="md5-block"><a href="#md5-block"><code>{{#md5}}...{{/md5}}</code></a></h3>
+      <pre><code>{{#md5}}{{userName}}@{{host}}{{/md5}}</code></pre>
+
+      <h3 id="minInList"><a href="#minInList"><code>{{#minInList}}...{{/minInList}}</code></a></h3>
+      <pre><code>{{#minInList shoppingCartItems "price"}}
+  &lt;div&gt;The least expensive item in your cart is: {{price}}&lt;/div&gt;
+{{/minInList}}</code></pre>
+
+      <h3 id="now"><a href="#now"><code>{{now}}</code></a></h3>
+      <pre><code>{{now format="yyyy"}}</code></pre>
+
+      <h3 id="now-day-name"><a href="#now-day-name"><code>{{now (day name)}}</code></a></h3>
+      <pre><code>{{now format="EEEE"}}</code></pre>
+
+      <h3 id="now-day-number"><a href="#now-day-number"><code>{{now (day number)}}</code></a></h3>
+      <pre><code>{{now format="u"}}</code></pre>
+
+      <h3 id="now-year"><a href="#now-year"><code>{{now (year)}}</code></a></h3>
+      <pre><code>{{now format="yyyy"}}</code></pre>
+
+      <h3 id="not-block"><a href="#not-block"><code>{{#not}}...{{/not}}</code></a></h3>
+      <pre><code>{{#not likesCats}}
+  The user does not like cats!
+{{else}}
+  The user does like cats!
+{{/not}}</code></pre>
+
+      <h3 id="not-inline"><a href="#not-inline"><code>{{not}}</code></a></h3>
+      <pre><code>{{not likesCats yes="You do not like cats" no="You do like cats"}}</code></pre>
+
+      <h3 id="numberFormat-currency"><a href="#numberFormat-currency"><code>{{numberFormat (currency)}}</code></a></h3>
+      <pre><code>{{numberFormat 5.2345 "currency" "en_US"}}</code></pre>
+
+      <h3 id="numberFormat-custom"><a href="#numberFormat-custom"><code>{{numberFormat (custom)}}</code></a></h3>
+      <pre><code>{{numberFormat 1234.5678 ",000.00"}}</code></pre>
+      <pre><code>{{numberFormat 3 "0.00"}}</code></pre>
+
+      <h3 id="numberFormat-grouping"><a href="#numberFormat-grouping"><code>{{numberFormat (grouping)}}</code></a></h3>
+      <pre><code>{{numberFormat 1000000 groupingUsed=true}}</code></pre>
+
+      <h3 id="numberFormat-maxFraction"><a href="#numberFormat-maxFraction"><code>{{numberFormat (maxFraction)}}</code></a></h3>
+      <pre><code>{{numberFormat 123.456789 maximumFractionDigits=3}}</code></pre>
+
+      <h3 id="numberFormat-minFraction"><a href="#numberFormat-minFraction"><code>{{numberFormat (minFraction)}}</code></a></h3>
+      <pre><code>{{numberFormat 123.4 minimumFractionDigits=5}}</code></pre>
+
+      <h3 id="numberFormat-percent"><a href="#numberFormat-percent"><code>{{numberFormat (percent)}}</code></a></h3>
+      <pre><code>{{numberFormat .23 "percent"}}</code></pre>
+
+      <h3 id="numberFormat-round-ceiling"><a href="#numberFormat-round-ceiling"><code>{{numberFormat (round ceiling)}}</code></a></h3>
+      <pre><code>{{numberFormat -5.5 "integer" roundingMode="ceiling"}}</code></pre>
+
+      <h3 id="numberFormat-round-down"><a href="#numberFormat-round-down"><code>{{numberFormat (round down)}}</code></a></h3>
+      <pre><code>{{numberFormat 5.5 "integer" roundingMode="down"}}`</code></pre>
+
+      <h3 id="numberFormat-round-floor"><a href="#numberFormat-round-floor"><code>{{numberFormat (round floor)}}</code></a></h3>
+      <pre><code>{{numberFormat -5.5 "integer" roundingMode="floor"}}</code></pre>
+
+      <h3 id="numberFormat-round-half-down"><a href="#numberFormat-round-half-down"><code>{{numberFormat (round half down)}}</code></a></h3>
+      <pre><code>{{numberFormat -5.5 "integer" roundingMode="half_down"}}</code></pre>
+
+      <h3 id="numberFormat-round-half-even"><a href="#numberFormat-round-half-even"><code>{{numberFormat (round half even)}}</code></a></h3>
+      <pre><code>{{numberFormat 5.5 "integer" roundingMode="half_even"}}`</code></pre>
+
+      <h3 id="numberFormat-round-half-up"><a href="#numberFormat-round-half-up"><code>{{numberFormat (round half up)}}</code></a></h3>
+      <pre><code>{{numberFormat -5.5 "integer" roundingMode="half_up"}}</code></pre>
+
+      <h3 id="numberFormat-round-up"><a href="#numberFormat-round-up"><code>{{numberFormat (round up)}}</code></a></h3>
+      <pre><code>{{numberFormat 5.5 "integer" roundingMode="up"}}</code></pre>
+
+      <h3 id="or-block"><a href="#or-block"><code>{{#or}}...{{/or}}</code></a></h3>
+      <pre><code>{{#or likesCats likesDogs}}
+  &lt;div&gt;You like cats or dogs!&lt;/div&gt;
+{{else}}
+  &lt;div&gt;You do not like cats, and you do not like dogs!&lt;/div&gt;
+{{/or}}</code></pre>
+
+      <h3 id="or-inline"><a href="#or-inline"><code>{{or}}</code></a></h3>
+      <pre><code>{{or likesCats likesDogs likesHamsters yes="You like at least one kind of pet" no="You are not a pet person"}}</code></pre>
+
+      <h3 id="profileFieldName"><a href="#profileFieldName"><code>{{profile.fieldName}}</code></a></h3>
+      <pre><code>{{profile.firstName}}</code></pre>
+
+      <h3 id="replace"><a href="#replace"><code>{{replace}}</code></a></h3>
+      <pre><code>{{replace myMergeParam " " "-"}}</code></pre>
+
+      <h3 id="sendSkip"><a href="#sendSkip"><code>{{sendSkip}}</code></a></h3>
+      <pre><code>{{#ifLt creditAvailable product.price}}
+  {{sendSkip cause="insufficient credit" creditAvailable=creditAvailable creditRequired=product.price}}
+{{/ifLt}}</code></pre>
+
+      <h3 id="sha1"><a href="#sha1"><code>{{sha1}}</code></a></h3>
+      <pre><code>{{sha1 field1}}</code></pre>
+
+      <h3 id="sha1-block"><a href="#sha1-block"><code>{{#sha1}}...{{/sha1}}</code></a></h3>
+      <pre><code>{{#sha1}}{{userName}}@{{host}}{{/sha1}}</code></pre>
+
+      <h3 id="sha256"><a href="#sha256"><code>{{sha256}}</code></a></h3>
+      <pre><code>{{sha256 field1}}</code></pre>
+
+      <h3 id="sha256-block"><a href="#sha256-block"><code>{{#sha256}}...{{/sha256}}</code></a></h3>
+      <pre><code>{{#sha256}}{{userName}}@{{host}}{{/sha256}}</code></pre>
+
+      <h3 id="size"><a href="#size"><code>{{size}}</code></a></h3>
+      <pre><code>{{shoppingCartItems.size}}</code></pre>
+
+      <h3 id="slugify"><a href="#slugify"><code>{{slugify}}</code></a></h3>
+      <pre><code>{{slugify myMergeParam}}</code></pre>
+
+      <h3 id="snippet"><a href="#snippet"><code>{{snippet}}</code></a></h3>
+      <pre><code>{{snippet "snippetname" arg0=x arg1=y ...}}</code></pre>
+
+      <h3 id="substring"><a href="#substring"><code>{{substring}}</code></a></h3>
+      <pre><code>{{substring myMergeParam 3 6}}</code></pre>
+
+      <h3 id="this-triple-curly"><a href="#this-triple-curly"><code>{{{this}}}</code> (HTML content)</a></h3>
+      <pre><code>{{{customHTMLparameter}}}</code></pre>
+
+      <h3 id="this-double-square-single-curly"><a href="#this-double-square-single-curly"><code>[[{this}]]</code> (HTML content from data feed)</a></h3>
+      <pre><code>[[{customHTMLparameter}]]</code></pre>
+
+      <h3 id="timestamp"><a href="#timestamp"><code>{{timestamp}}</code></a></h3>
+      <pre><code>{{timestamp}}</code></pre>
+
+      <h3 id="toJson"><a href="#toJson"><code>{{toJson}}</code></a></h3>
+      <pre><code>{{toJson myMergeParam}}</code></pre>
+
+      <h3 id="toUrlEncodedJson"><a href="#toUrlEncodedJson"><code>{{toUrlEncodedJson}}</code></a></h3>
+      <pre><code>{{toUrlEncodedJson myMergeParam}}</code></pre>
+
+      <h3 id="unless"><a href="#unless"><code>{{#unless}}...{{/unless}}</code></a></h3>
+      <pre><code>{{#unless activeUser}}
+  &lt;div&gt;Hey inactive user, come on back!&lt;/div&gt;
+{{/unless}}</code></pre>
+
+      <h3 id="upper"><a href="#upper"><code>{{upper}}</code></a></h3>
+      <pre><code>{{upper myMergeParam}}</code></pre>
+
+      <h3 id="urlEncode"><a href="#urlEncode"><code>{{#urlEncode}}...{{/urlEncode}}</code></a></h3>
+      <pre><code>https://www.example.com/search?q={{#urlEncode}}{{myMergeParam}}{{/urlEncode}}</code></pre>
+
+    </div>
+  </div>
+
+  <div class="fixed-index-sidebar">
+    <h2>Index</h2>
+    <input type="text" id="indexSearch" onkeyup="filterIndex()" placeholder="Search functions...">
+    <ul id="indexList">
+      <li><a href="#abbreviate"><code>{{abbreviate}}</code></a></li>
+      <li><a href="#and-block"><code>{{#and}}...{{/and}}</code></a></li>
+      <li><a href="#and-inline"><code>{{and}}</code></a></li>
+      <li><a href="#assign"><code>{{#assign}}...{{/assign}}</code></a></li>
+      <li><a href="#base64"><code>{{#base64}}...{{/base64}}</code></a></li>
+      <li><a href="#breaklines"><code>{{#breaklines}}...{{/breaklines}}</code></a></li>
+      <li><a href="#capitalize"><code>{{capitalize}}</code></a></li>
+      <li><a href="#capitalizeFirst"><code>{{capitalizeFirst}}</code></a></li>
+      <li><a href="#capitalizeFirst-lower"><code>{{capitalizeFirst (lower)}}</code></a></li>
+      <li><a href="#center"><code>{{center}}</code></a></li>
+      <li><a href="#cut"><code>{{cut}}</code></a></li>
+      <li><a href="#dateFormat"><code>{{dateFormat}}</code></a></li>
+      <li><a href="#dateFormat-locale"><code>{{dateFormat (with locale)}}</code></a></li>
+      <li><a href="#dateFormat-full"><code>{{dateFormat (full)}}</code></a></li>
+      <li><a href="#dateFormat-long"><code>{{dateFormat (long)}}</code></a></li>
+      <li><a href="#dateFormat-medium"><code>{{dateFormat (medium)}}</code></a></li>
+      <li><a href="#dateFormat-short"><code>{{dateFormat (short)}}</code></a></li>
+      <li><a href="#dateFormat-tz"><code>{{dateFormat (with time zone)}}</code></a></li>
+      <li><a href="#dateMath"><code>{{dateMath}}</code></a></li>
+      <li><a href="#dateMath-age"><code>{{dateMath (age)}}</code></a></li>
+      <li><a href="#dateMath-calculate-from-date"><code>{{dateMath (calculate from date)}}</code></a></li>
+      <li><a href="#dateMath-calculate-from-now"><code>{{dateMath (calculate from now)}}</code></a></li>
+      <li><a href="#dateMath-days-away"><code>{{dateMath (days away)}}</code></a></li>
+      <li><a href="#defaultIfEmpty"><code>{{defaultIfEmpty}}</code></a></li>
+      <li><a href="#each"><code>{{#each}}...{{/each}}</code></a></li>
+      <li><a href="#each-index"><code>{{#each}}...{{@index}}...{{/each}}</code></a></li>
+      <li><a href="#eq-array-block"><code>{{#eq (array) }}...{{/eq}}</code></a></li>
+      <li><a href="#eq-array-inline"><code>{{eq (array) }}</code></a></li>
+      <li><a href="#eq-numeric-block"><code>{{#ifEq (numeric) }}...{{/ifEq}}</code></a></li>
+      <li><a href="#eq-numeric-inline"><code>{{eq (numeric) }}</code></a></li>
+      <li><a href="#eq-object-block"><code>{{#eq (object) }}...{{/eq}}</code></a></li>
+      <li><a href="#eq-object-inline"><code>{{eq (object) }}</code></a></li>
+      <li><a href="#fieldName"><code>{{fieldName}}</code></a></li>
+      <li><a href="#fieldWithBrackets"><code>{{[field name]}}</code></a></li>
+      <li><a href="#gt-numeric-block"><code>{{#ifGt (numeric) }}...{{/ifGt}}</code></a></li>
+      <li><a href="#gt-numeric-inline"><code>{{gt (numeric) }}</code></a></li>
+      <li><a href="#gte-numeric-block"><code>{{#ifGte (numeric) }}...{{/ifGte}}</code></a></li>
+      <li><a href="#gte-numeric-inline"><code>{{gte (numeric) }}</code></a></li>
+      <li><a href="#hmacSHA1"><code>{{hmacSHA1}}</code></a></li>
+      <li><a href="#if"><code>{{#if}}...{{/if}}</code></a></li>
+      <li><a href="#if-nested"><code>{{#if}}...{{else if}}...{{/if}}</code></a></li>
+      <li><a href="#ifContains"><code>{{#ifContains}}...{{/ifContains}}</code></a></li>
+      <li><a href="#ifContainsStr"><code>{{#ifContainsStr}}...{{/ifContainsStr}}</code></a></li>
+      <li><a href="#ifMatchesRegexStr-exact"><code>{{#ifMatchesRegexStr (exact)}}...{{/ifMatchesRegexStr}}</code></a></li>
+      <li><a href="#ifMatchesRegexStr-contains"><code>{{#ifMatchesRegexStr (contains)}}...{{/ifMatchesRegexStr}}</code></a></li>
+      <li><a href="#join"><code>{{join}}</code></a></li>
+      <li><a href="#key-this-array"><code>@key</code> and <code>this</code> (with arrays)</a></li>
+      <li><a href="#key-this-object"><code>@key</code> and <code>this</code> (with objects)</a></li>
+      <li><a href="#lower"><code>{{lower}}</code></a></li>
+      <li><a href="#lookup"><code>{{#lookup}}...{{/lookup}}</code></a></li>
+      <li><a href="#lookup-periods"><code>{{#lookup (with periods)}}...{{/lookup}}</code></a></li>
+      <li><a href="#lt-numeric-block"><code>{{#ifLt (numeric) }}...{{/ifLt}}</code></a></li>
+      <li><a href="#lt-numeric-inline"><code>{{lt (numeric) }}</code></a></li>
+      <li><a href="#lte-numeric-block"><code>{{#ifLte (numeric) }}...{{/ifLte}}</code></a></li>
+      <li><a href="#lte-numeric-inline"><code>{{lte (numeric) }}</code></a></li>
+      <li><a href="#maxInList"><code>{{#maxInList}}...{{/maxInList}}</code></a></li>
+      <li><a href="#md5"><code>{{md5}}</code></a></li>
+      <li><a href="#md5-block"><code>{{#md5}}...{{/md5}}</code></a></li>
+      <li><a href="#minInList"><code>{{#minInList}}...{{/minInList}}</code></a></li>
+      <li><a href="#now"><code>{{now}}</code></a></li>
+      <li><a href="#now-day-name"><code>{{now (day name)}}</code></a></li>
+      <li><a href="#now-day-number"><code>{{now (day number)}}</code></a></li>
+      <li><a href="#now-year"><code>{{now (year)}}</code></a></li>
+      <li><a href="#not-block"><code>{{#not}}...{{/not}}</code></a></li>
+      <li><a href="#not-inline"><code>{{not}}</code></a></li>
+      <li><a href="#numberFormat-currency"><code>{{numberFormat (currency)}}</code></a></li>
+      <li><a href="#numberFormat-custom"><code>{{numberFormat (custom)}}</code></a></li>
+      <li><a href="#numberFormat-grouping"><code>{{numberFormat (grouping)}}</code></a></li>
+      <li><a href="#numberFormat-maxFraction"><code>{{numberFormat (maxFraction)}}</code></a></li>
+      <li><a href="#numberFormat-minFraction"><code>{{numberFormat (minFraction)}}</code></a></li>
+      <li><a href="#numberFormat-percent"><code>{{numberFormat (percent)}}</code></a></li>
+      <li><a href="#numberFormat-round-ceiling"><code>{{numberFormat (round ceiling)}}</code></a></li>
+      <li><a href="#numberFormat-round-down"><code>{{numberFormat (round down)}}</code></a></li>
+      <li><a href="#numberFormat-round-floor"><code>{{numberFormat (round floor)}}</code></a></li>
+      <li><a href="#numberFormat-round-half-down"><code>{{numberFormat (round half down)}}</code></a></li>
+      <li><a href="#numberFormat-round-half-even"><code>{{numberFormat (round half even)}}</code></a></li>
+      <li><a href="#numberFormat-round-half-up"><code>{{numberFormat (round half up)}}</code></a></li>
+      <li><a href="#numberFormat-round-up"><code>{{numberFormat (round up)}}</code></a></li>
+      <li><a href="#or-block"><code>{{#or}}...{{/or}}</code></a></li>
+      <li><a href="#or-inline"><code>{{or}}</code></a></li>
+      <li><a href="#profileFieldName"><code>{{profile.fieldName}}</code></a></li>
+      <li><a href="#replace"><code>{{replace}}</code></a></li>
+      <li><a href="#sendSkip"><code>{{sendSkip}}</code></a></li>
+      <li><a href="#sha1"><code>{{sha1}}</code></a></li>
+      <li><a href="#sha1-block"><code>{{#sha1}}...{{/sha1}}</code></a></li>
+      <li><a href="#sha256"><code>{{sha256}}</code></a></li>
+      <li><a href="#sha256-block"><code>{{#sha256}}...{{/sha256}}</code></a></li>
+      <li><a href="#size"><code>{{size}}</code></a></li>
+      <li><a href="#slugify"><code>{{slugify}}</code></a></li>
+      <li><a href="#snippet"><code>{{snippet}}</code></a></li>
+      <li><a href="#substring"><code>{{substring}}</code></a></li>
+      <li><a href="#this-triple-curly"><code>{{{this}}}</code> (HTML content)</a></li>
+      <li><a href="#this-double-square-single-curly"><code>[[{this}]]</code> (HTML content from data feed)</a></li>
+      <li><a href="#timestamp"><code>{{timestamp}}</code></a></li>
+      <li><a href="#toJson"><code>{{toJson}}</code></a></li>
+      <li><a href="#toUrlEncodedJson"><code>{{toUrlEncodedJson}}</code></a></li>
+      <li><a href="#unless"><code>{{#unless}}...{{/unless}}</code></a></li>
+      <li><a href="#upper"><code>{{upper}}</code></a></li>
+      <li><a href="#urlEncode"><code>{{#urlEncode}}...{{/urlEncode}}</code></a></li>
+    </ul>
+  </div>
+
+  <script>
+    function filterIndex() {
+      // Declare variables
+      var input, filter, ul, li, a, i, txtValue;
+      input = document.getElementById('indexSearch');
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("indexList");
+      li = ul.getElementsByTagName('li');
+
+      // Loop through all list items, and hide those who don't match the search query
+      for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName('a')[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
