@@ -14,13 +14,20 @@
 	Version stamp: 20250724
 -->
 <head>
+  <link rel="icon" href="iterable/iterable-logo.ico" type="image/x-icon">
   <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
   <meta name="author" content="Stephen Robert Baker">
   <meta name="description" content="An extremely lightweight reference document for looking up basic Handlebars functions to use within Iterable.">
   <meta name="keywords" content="web development, HTML, CSS, JavaScript">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iterable Handlebars Functions Reference</title>
   <style>
+    .disclaimer {
+      font-size: 12px;
+      line-height: 1.2;
+      color: #676767
+    }
     body {
       font-family: 'Roboto', sans-serif;
       background-color: #202124; /* Google Dark Mode background */
@@ -139,6 +146,8 @@
 </head>
 <body>
   <div class="main-content">
+    <a href="https://iterable.com/" target="_blank"><img src="../iterable/logo-itbl-black-and-white.svg" width="128" alt="Iterable"></a>
+    <div class="disclaimer">This is not an official Iterable document. For official Iterable assistance, view their <a href="https://support.iterable.com/hc/en-us" target="_blank">support page</a> or the official <a href="https://support.iterable.com/hc/en-us/articles/35601631606036-Handlebars-Overview" target="_blank">Iterable Handlebars Overview</a>. The HTML on this page is built to be hyper-lightweight. It uses JavaScript for the Index pane, but otherwise makes no external calls and gathers no personal data.</div>
     <h1>Handlebars Functions Reference</h1>
 
     <div class="code-example-section">
@@ -586,6 +595,7 @@ Greetings from {{myVar}}</code></pre>
       <pre><code>https://www.example.com/search?q={{#urlEncode}}{{myMergeParam}}{{/urlEncode}}</code></pre>
 
     </div>
+    <div class="disclaimer" style="margin-top: 50px"><strong>Disclaimer:</strong> The code examples provided in this document are for reference and educational purposes only. While we strive for accuracy, these examples may not be suitable for all applications and might require modifications for your specific use case. Implement them at your own risk. We are not responsible for any issues or damages that may arise from their use.</div>
   </div>
 
   <div class="fixed-index-sidebar">
