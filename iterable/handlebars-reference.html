@@ -1,18 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--
-	Created by Stephen R. Baker
-	https://github.com/Armedine
-	https://iterable.com/marketing-masters/step-baker/
-
-	This document and its associated Git profiles are not official members of, nor affiliated with, Iterable or any Iterable partner.
-
-	This document was designed as a quick-reference tool for development within Iterable templates, leveraging their templating language.
-
-	For official Handlebars documentation and help articles, visit https://support.iterable.com/hc/en-us
-
-	Version stamp: 20250724
--->
 <head>
   <link rel="icon" href="../iterable/iterable-logo.ico" type="image/x-icon">
   <meta charset="UTF-8">
@@ -360,6 +347,35 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="code-example-section">
+      <h2><a id="universal-merge-parameters" href="#universal-merge-parameters">Universal Merge Parameters</a></h2>
+      <ul>
+        <li><h3><a href="#unsubscribeUrl" id="unsubscribeUrl"><code>{{unsubscribeUrl}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('unsubscribeUrl', event)">📋</a></h3><pre class="code-pre" id="unsubscribeUrl">{{unsubscribeUrl}}</pre></li>
+        <li><h3><a href="#hostedUnsubscribeUrl" id="hostedUnsubscribeUrl"><code>{{hostedUnsubscribeUrl}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('hostedUnsubscribeUrl', event)">📋</a></h3><pre class="code-pre" id="hostedUnsubscribeUrl">{{hostedUnsubscribeUrl}}</pre></li>
+        <li><h3><a href="#unsubscribeMessageTypeUrl" id="unsubscribeMessageTypeUrl"><code>{{unsubscribeMessageTypeUrl}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('unsubscribeMessageTypeUrl', event)">📋</a></h3><pre class="code-pre" id="unsubscribeMessageTypeUrl">{{unsubscribeMessageTypeUrl}}</pre></li>
+        <li><h3><a href="#unsubscribeByPhoneUrl" id="unsubscribeByPhoneUrl"><code>{{unsubscribeByPhoneUrl}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('unsubscribeByPhoneUrl', event)">📋</a></h3><pre class="code-pre" id="unsubscribeByPhoneUrl">{{unsubscribeByPhoneUrl}}</pre></li>
+        <li><h3><a href="#campaignName" id="campaignName"><code>{{campaignName}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('campaignName', event)">📋</a></h3><pre class="code-pre" id="campaignName">{{campaignName}}</pre></li>
+        <li><h3><a href="#campaignId" id="campaignId"><code>{{campaignId}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('campaignId', event)">📋</a></h3><pre class="code-pre" id="campaignId">{{campaignId}}</pre></li>
+        <li><h3><a href="#recurringCampaignId" id="recurringCampaignId"><code>{{recurringCampaignId}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('recurringCampaignId', event)">📋</a></h3><pre class="code-pre" id="recurringCampaignId">{{recurringCampaignId}}</pre></li>
+        <li><h3><a href="#templateName" id="templateName"><code>{{templateName}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('templateName', event)">📋</a></h3><pre class="code-pre" id="templateName">{{templateName}}</pre></li>
+        <li><h3><a href="#templateId" id="templateId"><code>{{templateId}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('templateId', event)">📋</a></h3><pre class="code-pre" id="templateId">{{templateId}}</pre></li>
+        <li><h3><a href="#clientTemplateId" id="clientTemplateId"><code>{{clientTemplateId}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('clientTemplateId', event)">📋</a></h3><pre class="code-pre" id="clientTemplateId">{{clientTemplateId}}</pre></li>
+        <li><h3><a href="#channelId" id="channelId"><code>{{channelId}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('channelId', event)">📋</a></h3><pre class="code-pre" id="channelId">{{channelId}}</pre></li>
+        <li><h3><a href="#messageTypeId" id="messageTypeId"><code>{{messageTypeId}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('messageTypeId', event)">📋</a></h3><pre class="code-pre" id="messageTypeId">{{messageTypeId}}</pre></li>
+        <li><h3><a href="#workflowId" id="workflowId"><code>{{workflowId}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('workflowId', event)">📋</a></h3><pre class="code-pre" id="workflowId">{{workflowId}}</pre></li>
+        <li><h3><a href="#sendListIds" id="sendListIds"><code>{{sendListIds}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('sendListIds', event)">📋</a></h3><pre class="code-pre" id="sendListIds">{{sendListIds}}</pre></li>
+        <li><h3><a href="#brandName" id="brandName"><code>{{brandName}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('brandName', event)">📋</a></h3><pre class="code-pre" id="brandName">{{brandName}}</pre></li>
+        <li><h3><a href="#companyName" id="companyName"><code>{{companyName}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('companyName', event)">📋</a></h3><pre class="code-pre" id="companyName">{{companyName}}</pre></li>
+        <li><h3><a href="#physicalAddress" id="physicalAddress"><code>{{physicalAddress}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('physicalAddress', event)">📋</a></h3><pre class="code-pre" id="physicalAddress">{{physicalAddress}}</pre></li>
+        <li><h3><a href="#email" id="email"><code>{{email}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('email', event)">📋</a></h3><pre class="code-pre" id="email">{{email}}</pre></li>
+        <li><h3><a href="#userId" id="userId"><code>{{userId}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('userId', event)">📋</a></h3><pre class="code-pre" id="userId">{{userId}}</pre></li>
+        <li><h3><a href="#messagingInitiative" id="messagingInitiative"><code>{{messagingInitiative}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('messagingInitiative', event)">📋</a></h3><pre class="code-pre" id="messagingInitiative">{{messagingInitiative}}</pre></li>
+        <li><h3><a href="#now" id="now"><code>{{now}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('now', event)">📋</a></h3><pre class="code-pre" id="now">{{now}}</pre></li>
+        <li><h3><a href="#smsDisclaimerLink" id="smsDisclaimerLink"><code>{{smsDisclaimerLink}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('smsDisclaimerLink', event)">📋</a></h3><pre class="code-pre" id="smsDisclaimerLink">{{smsDisclaimerLink}}</pre></li>
+        <li><h3><a href="#viewInBrowserUrl" id="viewInBrowserUrl"><code>{{viewInBrowserUrl}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('viewInBrowserUrl', event)">📋</a></h3><pre class="code-pre" id="viewInBrowserUrl">{{viewInBrowserUrl}}</pre></li>
+        <li><h3><a href="#sendSkip"><code>{{sendSkip}}</code></a><a href="#" class="copy-emoji-link" onclick="copyCode('sendSkip', event)">📋</a></h3><pre class="code-pre" id="sendSkip">{{sendSkip}}</pre></li>
+      </ul>
     </div>
     <div class="code-example-section">
       <h2><a id="code-examples" href="#code-examples">Code Examples</a></h2>
@@ -776,8 +792,34 @@ Greetings from {{myVar}}</pre>
 
   <div class="fixed-index-sidebar">
     <h2>Index</h2>
-    <input type="text" id="indexSearch" onkeyup="filterIndex()" placeholder="Search functions...">
+    <input type="text" id="indexSearch" onkeyup="filterIndex()" placeholder="Search...">
     <ul id="indexList">
+      <li><strong>Universal Merge Parameters:</strong></li>
+      <li><a href="#unsubscribeUrl"><code>{{unsubscribeUrl}}</code></a></li>
+      <li><a href="#hostedUnsubscribeUrl"><code>{{hostedUnsubscribeUrl}}</code></a></li>
+      <li><a href="#unsubscribeMessageTypeUrl"><code>{{unsubscribeMessageTypeUrl}}</code></a></li>
+      <li><a href="#unsubscribeByPhoneUrl"><code>{{unsubscribeByPhoneUrl}}</code></a></li>
+      <li><a href="#campaignName"><code>{{campaignName}}</code></a></li>
+      <li><a href="#campaignId"><code>{{campaignId}}</code></a></li>
+      <li><a href="#recurringCampaignId"><code>{{recurringCampaignId}}</code></a></li>
+      <li><a href="#templateName"><code>{{templateName}}</code></a></li>
+      <li><a href="#templateId"><code>{{templateId}}</code></a></li>
+      <li><a href="#clientTemplateId"><code>{{clientTemplateId}}</code></a></li>
+      <li><a href="#channelId"><code>{{channelId}}</code></a></li>
+      <li><a href="#messageTypeId"><code>{{messageTypeId}}</code></a></li>
+      <li><a href="#workflowId"><code>{{workflowId}}</code></a></li>
+      <li><a href="#sendListIds"><code>{{sendListIds}}</code></a></li>
+      <li><a href="#brandName"><code>{{brandName}}</code></a></li>
+      <li><a href="#companyName"><code>{{companyName}}</code></a></li>
+      <li><a href="#physicalAddress"><code>{{physicalAddress}}</code></a></li>
+      <li><a href="#email"><code>{{email}}</code></a></li>
+      <li><a href="#userId"><code>{{userId}}</code></a></li>
+      <li><a href="#messagingInitiative"><code>{{messagingInitiative}}</code></a></li>
+      <li><a href="#now"><code>{{now}}</code></a></li>
+      <li><a href="#smsDisclaimerLink"><code>{{smsDisclaimerLink}}</code></a></li>
+      <li><a href="#viewInBrowserUrl"><code>{{viewInBrowserUrl}}</code></a></li>
+      <li><strong>Handlebars Functions:</strong></li>
+      <li><a href="#sendSkip"><code>{{sendSkip}}</code></a></li>
       <li><a href="#abbreviate"><code>{{abbreviate}}</code></a></li>
       <li><a href="#and-block"><code>{{#and}}...{{/and}}</code></a></li>
       <li><a href="#and-inline"><code>{{and}}</code></a></li>
@@ -886,17 +928,23 @@ Greetings from {{myVar}}</pre>
       var input, filter, ul, li, a, i, txtValue;
       input = document.getElementById('indexSearch');
       filter = input.value.toUpperCase();
-      ul = document.getElementById("indexList");
-      li = ul.getElementsByTagName('li');
+      ul = document.getElementById("indexList"); // This correctly targets the ul with id="indexList"
+      li = ul.getElementsByTagName('li'); // This gets all <li> elements within that specific ul
 
       // Loop through all list items, and hide those who don't match the search query
       for (i = 0; i < li.length; i++) {
+        // Attempt to get the anchor tag within the current list item
         a = li[i].getElementsByTagName('a')[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+
+        if (a) { // If an anchor tag exists within this li, it's a filterable item
+          txtValue = a.textContent || a.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = ""; // Show the list item
+          } else {
+            li[i].style.display = "none"; // Hide the list item
+          }
+        } else { // If no anchor tag, it's likely a category header (e.g., "Universal Merge Parameters:"), always show it
           li[i].style.display = "";
-        } else {
-          li[i].style.display = "none";
         }
       }
     }
